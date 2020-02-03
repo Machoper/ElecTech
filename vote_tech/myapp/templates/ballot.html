@@ -1,0 +1,33 @@
+{% extends "base.html" %} {% block content %}
+
+<div class="question" id="governorQuestion">
+    <form action="verify/" method="POST">
+        {% csrf_token %} {% for question in questionList %}
+        <div class="questionTitle">
+            <!-- <h2>Governor of the State of Virginia</h2> -->
+            <h2> {{ question.question_text }} </h2>
+            <p class="subtitle">Please vote for one:</p>
+        </div>
+        <table class="questionAnswers">
+            {% for option in question.options %}
+            <tr class="answer">
+                <td class="checkbox center">
+                    <input type="radio" name="{{ question.question_id }}" value="{{ option.option_id }}" />
+                </td>
+                <td class="answerInfo ">
+                    <h3 class="candName ">{{ option.title }}</h3>
+                    <p style="font-size: 12px ">{{ option.running_mate }}</p>
+                </td>
+                <td class="extra ">
+                    <p>{{ option.party }}</p>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endfor %}
+            <button type="submit">
+                Submit Vote
+            </button>
+    </form>
+</div>
+{% endblock content %}

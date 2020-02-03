@@ -1,0 +1,459 @@
+body {
+    margin: 10% 25%;
+    font-family: sans-serif;
+    text-align: center;
+    color: white;
+    background:
+        linear-gradient(
+            rgba(0, 40, 104, 0.75),
+            rgba(0, 40, 104, 0.75)
+        ),
+        url(images/patriotic-background.gif);
+    background-size: cover;
+
+}
+
+.confirmationDiv {
+    display: inline-block;
+}
+
+.confirmationTitle {
+    color: gold;
+    padding: 10px;
+}
+
+.mainTitle {
+}
+
+.subtitle {
+    font-style: italic;
+    font-size: 14px;
+}
+
+.loginContainer {
+    display: inline-block;
+}
+
+.loginType  {
+    display: inline-block;
+    color: #777777;
+    border-radius: 10px 10px 10px 10px;
+    background-color: #fff;
+    font-size: 12px;
+
+    width: 200px;
+    height: 200px;
+
+    margin-left: 5px;
+    margin-right: 5px;
+
+    text-align: center;
+    line-height: calc(200px - 40px);
+
+    position: relative;
+}
+
+.button {
+    background-color: #0006ab;
+    color: white !important;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    padding-top: 5px;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 16px;
+    border-color: none;
+    height: 40px;
+
+}
+
+button {
+    background-color: #0006ab;
+    color: white;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    padding-top: 5px;
+    border-radius: 10px;
+    width: 100%;
+    font-size: 16px;
+    border-color: none;
+    height: 40px;
+}
+.loginButton {
+    border-radius: 0px 0px 10px 10px;
+    color: white;
+}
+
+.button:hover {
+    background-color: #BF0A30;
+}
+button:hover {
+    background-color: #BF0A30;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+input {
+    width: 70%;
+    height: 30px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 16px;
+}
+
+#lastNameDiv {
+    margin-top: 20px;
+}
+
+#docButton {
+    background-color: #0006AB;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#docButton a  {
+    color: #fff;
+    text-decoration: none;
+}
+
+#backButton {
+    background-color: #0006AB;
+    margin:  auto;
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    cursor: pointer;
+}
+
+#backButton a  {
+    color: #fff;
+    text-decoration: none;
+}
+
+.ballotInfo    {
+    background-color: white;
+    color: black;
+
+    height: 100px;
+    border-radius: 10px 10px 0px 0px;
+/*    display: inline-block;*/
+
+    padding: 10px;
+}
+
+.ballotInfo div    {
+    display: inline-block;
+}
+
+.ballotInfo .left   {
+    float: left;
+    text-align: left;
+}
+.ballotInfo .right  {
+    float: right;
+    text-align: right;
+}
+
+
+.ballotInfo h3 {
+/*    color: red;*/
+
+}
+
+.ballotInfo .right p  {
+/*    float: right;*/
+    text-align: right;
+/*    color: blue;*/
+}
+.ballotContainer .button {
+    border-radius: 0px 0px 10px 10px;
+}
+
+.ballotContainer .button a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.ballotContainer {
+    margin-bottom: 20px;
+}
+
+.question {
+    margin-bottom: 20px;
+    /*border-radius: 20px;*/
+}
+
+.questionTitle {
+    background-color: gainsboro;
+    color: black;
+    padding: 10px;
+}
+.questionTitle h2 {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.voteConfirmTitle {
+    background-color: gainsboro;
+    color: black;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+.voteConfirmTitle h2 {
+    font-size: 20px;
+    margin-bottom: 0;
+}
+
+.questionAnswers {
+    margin-top: 0px;
+    margin-bottom: 20px;
+    background-color: white;
+    color: black;
+    width: 100%;
+    padding: 20px;
+    table-layout: auto;
+}
+
+/* CSS FOR THE BALLOT PAGE */
+.answer {
+    /*display: block;*/
+    /*display: flex;*/
+    /*overflow: auto;*/
+    /*clear: right;*/
+    /*width: 100%;*/
+
+    /* is the container */
+
+    /*border: solid 10px green;*/
+    outline: solid 2px gray;
+
+    margin-bottom: 5px;
+}
+
+.answer .checkbox   {
+    /*border: solid 2px red;*/
+}
+
+.answer .center     {
+        text-align: center;
+    vertical-align: middle;
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 0px 10px;
+}
+td, th {
+    padding: 5px;
+}
+tr {
+    height: 100px;
+}
+
+.answer input {
+    transform: scale(1.5);
+    /*margin-right: 10px;*/
+    /*border: solid 2px green;*/
+}
+
+.workInfo {
+    background-color: white;
+    color: black;
+
+    height: 535px;
+    border-radius: 10px 10px 10px 10px;
+/*    display: inline-block;*/
+
+    padding: 10px;
+}
+
+.workInfo div    {
+    display: inline-block;
+}
+
+.workInfo .left   {
+    float: left;
+    text-align: left;
+}
+
+.workerInfoContainer {
+    margin-bottom: 20px;
+
+}
+
+/* Popup container */
+.popup {
+  background-color: #0006AB;
+  position: fixed;
+  right: 20px;
+  bottom: 70px;
+  padding: 10px;
+  border-radius: 10px;
+  display: inline-block;
+  cursor: pointer;
+}
+
+/* The actual popup (appears on top) */
+.popup .popupbox {
+    visibility: hidden;
+    border: solid .5px black;
+    border-radius: 10px;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    box-shadow: 1px 1px 30px 17px rgba(50, 50, 50, 0.52);
+    /* background: rgba(255, 255, 255, 0.75); */
+    background-color: #507eff;
+
+    z-index: 100;
+
+    /* text-align: left;
+    text-indent: 10px;
+    font-weight: bold;
+    padding: 10px; */
+
+    height: 325px;
+    margin-top: -200px;
+
+
+    width: 600px;
+    margin-left: -300px;
+}
+
+.popup .popupbox h3 {
+  text-align: left;
+  text-indent: 10px;
+  font-weight: bold;
+  padding: 05px;
+}
+
+/* Toggle this class when clicking on the popup container (hide and show the popup) */
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+.popUpX {
+
+}
+.popUpX p{
+  position: absolute;
+  bottom: 265px;
+  left: 570px;
+  opacity: 0.75;
+}
+
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+
+
+#workButton {
+    background-color: #0006AB;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#workButton a  {
+    color: #fff;
+    text-decoration: none;
+}
+
+.helpInfo {
+    background-color: white;
+    color: black;
+
+    height: 200px;
+    border-radius: 10px 10px 10px 10px;
+/*    display: inline-block;*/
+
+    padding: 10px;
+}
+
+.helpInfo p  {
+  text-align: left;
+  padding: 05px;
+}
+
+.helpInfo div    {
+    display: inline-block;
+}
+
+.helpInfoContainer {
+    margin-bottom: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+
+}
+
+.answer .left   {
+    float: left;
+    text-align: left;
+    display: inline-block;
+}
+
+.answer .answerInfo {
+    /*display: inline-block;*/
+    /*border: solid 2px red;*/
+    text-align: left;
+
+}
+.answer .extra  {
+    right: 0;
+    text-align: center;
+    background-color: antiquewhite;
+    margin-left: auto;
+    /*border: solid 2px red;*/
+}
+
+.answer .float-right {
+    margin-left: auto;
+}
+
+.api-header {
+    text-align: left;
+    font-size: 30px;
+}
+
+.api-description {
+    text-align: left;
+    font-size: 18px;
+}
+
+.api-parameters {
+    text-align: left;
+    font-style: italic;
+}
+
+.api-route {
+    text-align: left;
+    text-decoration: underline;
+}
+
+.api-example {
+    text-align: left;
+}

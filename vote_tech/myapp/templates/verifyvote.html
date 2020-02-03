@@ -1,0 +1,32 @@
+{% extends "base.html" %} {% block content %}
+
+<h2>Please confirm your votes below:</h2>
+
+<div class="question" id="governorQuestion">
+  <form action="voted/" method="POST">
+    {% csrf_token %} {% for votedOption in votedOptions %}
+    <table class="questionAnswers">
+      <div class="questionTitle">
+        <h2> {{ votedOption.question.question_text }} </h2>
+      </div>
+      <tr class="answer">
+        <td class="checkbox center">
+
+          <input type="checkbox" name="{{ votedOption.question.id }}" value="{{ votedOption.option.id }}" style="display: none" checked/>
+        </td>
+        <td class="answerInfo ">
+          <h3 class="candName ">{{ votedOption.option.title }}</h3>
+          <p style="font-size: 12px ">{{ votedOption.option.running_mate }}</p>
+        </td>
+        <td class="extra ">
+          <p>{{ votedOption.option.party }}</p>
+        </td>
+      </tr>
+    </table>
+    {% endfor %}
+
+    
+      <button type="submit ">Submit Vote</button>
+  </form>
+</div>
+{% endblock content %}

@@ -1,0 +1,36 @@
+{% extends "base.html" %} {% block content %} {% if messages %} {% for message in messages %}
+<script>
+    alert('{{ message }}');
+</script> {% endfor %} {% endif %}
+
+
+<!-- Header Section -->
+<h1 class="mainTitle">Welcome to the Election</h1>
+<h2 class="subtitle">Please enter your
+    <strong>voter identification number</strong> and your
+    <strong>last name</strong>:</h2>
+
+<!-- Content Section -->
+
+{% if form.errors %}
+<p>Your username and password didn't match. Please try again.</p>
+{% endif %}
+
+<form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+
+    <div id="lastNameDiv">
+        <td>ID Number: </td>
+        <td>{{ form.username }}</td>
+    </div>
+    <div id="idNumberDiv">
+        <td>Last Name: </td>
+        <td>{{ form.password }}</td>
+    </div>
+
+    <div id="loginButtonDiv">
+        <input class="button" type="submit" value="Submit" />
+        <input type="hidden" name="next" value="{{ next }}" />
+    </div>
+</form>
+{% endblock content %}

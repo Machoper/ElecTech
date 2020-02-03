@@ -1,0 +1,58 @@
+
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ElecTech System</title>
+        <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
+        <!--<p>Welcome, {{ user.username }}. </p>-->
+        <script>
+          // When the user clicks on <div>, open the popup
+          function myFunction() {
+              var popup = document.getElementById("myPopup");
+              popup.classList.toggle("show");
+          }
+
+          function myFunction2() {
+              var popup2 = document.getElementById("loginPopup");
+              popup2.classList.toggle("show");
+          }
+
+          function validateWorkerID() {
+            var workerID = "workerID123"
+            var x = document.getElementById("inputID").value;
+            if(x == workerID){
+              window.location.href = "/worker";
+            }
+            else {
+              alert("Incorrect ID.");
+            }
+          }
+        </script>
+    </head>
+    <body>
+    {% block content %}
+    {% endblock content %}
+
+    {% if user.is_authenticated %}
+        <div class="popup" onclick="myFunction2()">Logout
+            <span class="popupbox" id="loginPopup">
+                <h4> Logging out </h4>
+                <div class="logoutInfoContainer">
+                    <div class="logoutInfo">
+                        <p> Are you sure you want to log out?
+                            <div id="logoutButton">
+                                <a href="/logout"> Logout </a>
+                            </div>
+
+                        </p>
+                    </div>
+                </div>
+            </span>
+        </div>
+    {% endif %}
+
+    </body>
+
+
+</html>

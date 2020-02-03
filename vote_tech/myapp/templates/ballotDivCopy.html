@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% for i in "xxx" %}
+<div class="question" id="governorQuestion">
+    <div class="questionTitle">
+        <h2>Governor of the State of Virginia</h2>
+        <p class="subtitle">Please vote for one:</p>
+    </div>
+    <div class="questionAnswers">
+        <div class="answer">
+            <div class="left">
+                <input type="checkbox" name="candidate1" />
+                <div class="answerInfo">
+                    <h3 class="candName">Last name, First Name</h3>
+                    <p style="font-size: 12px">Running Mate</p>
+                </div>
+            </div>
+            <div class="right">
+                <p>Party</p>
+            </div>
+            
+        </div>
+        <br />
+        <div class="answer">
+            <div class="left">
+                <input type="checkbox" name="candidate1" />
+                <div class="answerInfo">
+                    <h3 class="candName">Last name, First Name</h3>
+                    <p style="font-size: 12px">Running Mate</p>
+                </div>
+            </div>
+            <div class="right">
+                <p>Party</p>
+            </div>
+            
+        </div>
+        
+    </div>
+</div>
+{% endfor %}
+{% endblock content %}

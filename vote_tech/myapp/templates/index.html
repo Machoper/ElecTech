@@ -1,0 +1,41 @@
+{% extends "base.html" %} {% block content %}
+<div class="confirmationDiv">
+    <h1 class="confirmationTitle">Thanks for voting!</h1>
+</div>
+<h1 class="mainTitle">Welcome to the {{ activeElection.title }} Election</h1>
+
+<!-- Content Section -->
+<div class="loginContainer">
+    <div class="loginType" id="voterID">
+        <h2>Voter ID</h2>
+        <a href="{%url 'login' %}">
+            <div class="button loginButton" id="login_passport">
+                Login with Voter ID
+            </div>
+        </a>
+    </div>
+</div>
+
+<div class="popup" onclick="myFunction()">Help
+    <span class="popupbox" id="myPopup">
+        <h3> How to vote: </h3>
+        <div class="popUpX">
+            <p> x </p>
+        </div>
+        <div class="helpInfoContainer">
+            <div class="helpInfo">
+                <p> - For logging in and checking in, please refer to your voter identification number that you will have received in preregistration prior to today’s election day.
+                    <br /> - If, at any point in the election, you wish to terminate your voting session, you may log out. You will then be able to begin the process over by returning to the checkin line.
+                    <br /> - Once you submit your vote, your vote is considered recorded and unalterable. You may no longer vote any additional times.
+                    <br /> - If you have any additional questions, raise your hand to call over a poll worker to assist you.
+                </p>
+            </div>
+        </div>
+    </span>
+</div>
+
+<div id="docButton">
+    <a href="/docs/">DOCS</a>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>API Help</h1>
+<p>Use this page to learn how to access certain API endpoints for gathering/keeping data on the election system.  Use this in combination with your registered API key. If given a 404 invalid api key provided, make sure the end of your url has /?key={registered_key} where registered key is your api key.  Double check to make sure your key is typed in correctly.</p>
+<hr>
+<h2 class="api-header">Get all elections</h2>
+<p class="api-description">This call can be made to request a JSON list of all the elections.  This includes information on the date of the election, the election title, the type of election, and whether the election is active. </p>
+
+<p class="api-route">Route:    localhost:8000/elections/</p>
+
+<p class="api-example">Example Return:</p>
+<p class="api-example">
+    [{"model": "myapp.election", "pk": "2018-11", "fields": {"title": "November 2018", "election_type": "primary", "active": true}}, {"model": "myapp.election", "pk": "2020-11", "fields": {"title": "November 2020", "election_type": "general", "active": false}}]</p>
+
+<hr>
+
+<h2 class="api-header">Get all ballots</h2>
+<p class="api-description">This call returns a list of all the ballots for every election.  This includes information on the ballot title, the election it corresponds to, and the location that the ballot will be in.
+</p>
+
+<p class="api-route">Route:  localhost:8000/ballots
+</p>
+
+<p class="api-example">Example Return:</p>
+<p class="api-example">
+[{"model": "myapp.ballot", "pk": 1, "fields": {"title": "Democratic Primary", "election": "2018-11", "location": "Virginia"}}, {"model": "myapp.ballot", "pk": 2, "fields": {"title": "Republican Primary", "election": "2018-11", "location": "Virginia"}}, {"model": "myapp.ballot", "pk": 3, "fields": {"title": "Presidental Election", "election": "2020-11", "location": "Virginia"}}]
+</p>
+
+<hr>
+
+<h2 class="api-header">Get ballots within a certain election</h2>
+<p class="api-description">This call returns a list of ballots for a specific election based on an election ID.  This merely filters the call for all ballots by election ID of the ballot.</p>
+<p class="api-route">Route:  localhost:8000/{election_id}/ballots/
+</p>
+<p class="api-parameters">Election_id:    string MONTH-YEAR</p>
+<p class="api-example">Example Return:</p>
+<p class="api-example">
+    [{"model": "myapp.ballot", "pk": 1, "fields": {"title": "Democratic Primary", "election": "2018-11", "location": "Virginia"}}, {"model": "myapp.ballot", "pk": 2, "fields": {"title": "Republican Primary", "election": "2018-11", "location": "Virginia"}}]</p>
+
+<hr>
+
+<h2 class="api-header">Get results within a certain election</h2>
+<p class="api-description">This call returns a result of all ballots for a specific election based on an election ID.  This allows a news source to view the results of an election.</p>
+<p class="api-route">Route:  localhost:8000/{election_id}/results/
+</p>
+<p class="api-parameters">Election_id:    string MONTH-YEAR</p>
+<p class="api-example">Example Return:</p>
+<p class="api-example">
+    [{"model": "myapp.ballot", "pk": 1, "fields": {"title": "Democratic Primary", "election": "2018-11", "location": "Virginia"}}, {"model": "myapp.ballot", "pk": 2, "fields": {"title": "Republican Primary", "election": "2018-11", "location": "Virginia"}}]</p>
+
+<hr>
+
+<h2 class="api-header">Get an election by a certain election id</h2>
+<p class="api-description">This call filters the call to all elections by a certain election ID.  The ID string format is given below.  If the ID you requested is not a registered election ID, this call will return null.</p>
+<p class="api-route">Route:    localhost:8000/elections/{election_id}</p>
+<p class="api-parameters">Election_id:    string MONTH-YEAR</p>
+
+<p class="api-example">Example Return</p>
+<p class="api-example">
+    [{"model": "myapp.election", "pk": "2018-11", "fields": {"title": "November 2018", "election_type": "primary", "active": true}}] </p>
+
+<hr>
+
+<h2 class="api-header">Get votes for a certain questions
+</h2>
+<p class="api-description">This call returns anonymized results for a certain election question.  It returns a breakdown of total votes for the question and votes for certain options of that question.</p>
+
+<p class="api-route">Route: localhost:8000/votes/question/{question_id}/
+</p>
+<p class="api-parameters">question_id:	    int</p>
+
+<p class="api-example">Example Return</p>
+<p class="api-example">
+    [{"model": "myapp.option", "pk": 1, "fields": {"title": "Mark Sherriff", "party": "Democratic", "running_mate": null, "votes": 4, "question": 1}}, {"model": "myapp.option", "pk": 2, "fields": {"title": "Aaron Bloomfield", "party": "Democratic", "running_mate": null, "votes": 1, "question": 1}}]
+</p>
+
+<hr>
+
+<h2 class="api-header">Get votes based on party</h2>
+<p class="api-description">This returns a list of options with a specific specified party.  Using this call can allow one to see polling results for all questions and options tied to a specific party.</p>
+
+<p class="api-route">Route: localhost:8000/votes/party/{party_id}/
+</p>
+<p class="api-parameters">Party_id:	    string</p>
+
+<p class="api-example">Example Return</p>
+<p class="api-example">
+    [{"model": "myapp.option", "pk": 1, "fields": {"title": "Mark Sherriff", "party": "Democratic", "running_mate": null, "votes": 4, "question": 1}}, {"model": "myapp.option", "pk": 2, "fields": {"title": "Aaron Bloomfield", "party": "Democratic", "running_mate": null, "votes": 1, "question": 1}}, {"model": "myapp.option", "pk": 6, "fields": {"title": "Mark Sherriff", "party": "Democratic", "running_mate": "Craig Dill", "votes": 4, "question": 3}}]
+</p>
+
+<hr>
+
+<h2 class="api-header">Get Results By Precinct ID</h2>
+<p class="api-description">This returns a list of results for every question and option in the active election based on a certain precinct ID.</p>
+
+<p class="api-route">Route: localhost:8000/results/{precinct_id}/
+</p>
+<p class="api-parameters">Precinct_id:	  int</p>
+
+<p class="api-example">Example Return</p>
+<p class="api-example">
+    [{"model": "myapp.measure", "pk": 25, "fields": {"precinct_id": "0301", "option": 1, "question": 1, "votes": 0}}, {"model": "myapp.measure", "pk": 27, "fields": {"precinct_id": "0301", "option": 3, "question": 2, "votes": 0}}, {"model": "myapp.measure", "pk": 29, "fields": {"precinct_id": "0301", "option": 5, "question": 3, "votes": 0}}, {"model": "myapp.measure", "pk": 30, "fields": {"precinct_id": "0301", "option": 6, "question": 3, "votes": 0}}, {"model": "myapp.measure", "pk": 31, "fields": {"precinct_id": "0301", "option": 7, "question": 4, "votes": 0}}, {"model": "myapp.measure", "pk": 32, "fields": {"precinct_id": "0301", "option": 8, "question": 4, "votes": 0}}, {"model": "myapp.measure", "pk": 26, "fields": {"precinct_id": "0301", "option": 2, "question": 1, "votes": 1}}, {"model": "myapp.measure", "pk": 28, "fields": {"precinct_id": "0301", "option": 4, "question": 2, "votes": 1}}]
+</p>
+
+<hr>
+
+<h2 class="api-header">Get Results By Precinct and Question ID</h2>
+<p class="api-description">This returns the results of a specific question in a certain precinct.</p>
+
+<p class="api-route">Route: localhost:8000/results/{precinct_id}/{question_id}/
+</p>
+<p class="api-parameters">Precinct_id:	int<br>Question_id:	int</p>
+
+<p class="api-example">Example Return</p>
+<p class="api-example">
+    [{"model": "myapp.measure", "pk": 27, "fields": {"precinct_id": "0301", "option": 3, "question": 2, "votes": 0}}, {"model": "myapp.measure", "pk": 28, "fields": {"precinct_id": "0301", "option": 4, "question": 2, "votes": 1}}]
+</p>
+
+<hr>
+
+<h2 class="api-header">Get Voters By Precinct</h2>
+<p class="api-description">This returns a list of voters registered in a certain precinct.</p>
+
+<p class="api-route">Route: localhost:8000/pollingsite/{precinct_id}/</p>
+<p class="api-parameters">Precinct_id:	int</p>
+
+<p class="api-example">Example Return</p>
+<p class="api-example">
+    [{"model": "myapp.profile", "pk": 2, "fields": {"voter_number": 1, "voter_status": "inactive", "date_registered": "2018-04-16", "address": "435 Fairfair Street", "county": "Fairfax", "state": "Virginia", "zip_code": "22309", "locality": "Alexandria", "precinct": "ALE_504", "precinct_id": "8", "user": 2}}]
+</p>
+
+<hr>
+
+<h2 class="api-header">Get all the votes</h2>
+<p class="api-description">Gets all the votes in the election</p>
+
+<p class="api-route">Route: localhost:8000/votes/</p>
+
+<p class="api-example">Example Return</p>
+<p class="api-example">
+    [{"model": "myapp.option", "pk": 1, "fields": {"title": "Mark Sherriff", "party": "Democratic", "running_mate": null, "votes": 4, "question": 1}}, {"model": "myapp.option", "pk": 2, "fields": {"title": "Aaron Bloomfield", "party": "Democratic", "running_mate": null, "votes": 1, "question": 1}}, {"model": "myapp.option", "pk": 3, "fields": {"title": "Mark Sherriff", "party": "Republican", "running_mate": null, "votes": 0, "question": 2}}, {"model": "myapp.option", "pk": 4, "fields": {"title": "Aaron Bloomfield", "party": "Republican", "running_mate": null, "votes": 0, "question": 2}}, {"model": "myapp.option", "pk": 5, "fields": {"title": "Aaron Bloomfield", "party": "Republican", "running_mate": "Joanne Dugan", "votes": 0, "question": 3}}, {"model": "myapp.option", "pk": 6, "fields": {"title": "Mark Sherriff", "party": "Democratic", "running_mate": "Craig Dill", "votes": 4, "question": 3}}, {"model": "myapp.option", "pk": 7, "fields": {"title": "I am for Title LXIX", "party": null, "running_mate": null, "votes": 4, "question": 4}}, {"model": "myapp.option", "pk": 8, "fields": {"title": "I am against Title LXIX", "party": null, "running_mate": null, "votes": 0, "question": 4}}]
+</p>
+
+<hr>
+
+<h2 class="api-header">Get profile</h2>
+<p class="api-description">Gets a voter profile</p>
+
+<p class="api-route">Route: localhost:8000/profile/</p>
+
+<p class="api-example">Example Return</p>
+<p class="api-example">
+    [{"model": "myapp.profile", "pk": 1, "fields": {"voter_number": 1, "voter_status": "inactive", "date_registered": "2018-04-16", "address": null, "county": null, "state": null, "zip_code": null, "locality": null, "precinct": null, "precinct_id": null, "user": 1}}, {"model": "myapp.profile", "pk": 2, "fields": {"voter_number": 1, "voter_status": "inactive", "date_registered": "2018-04-16", "address": "435 Fairfair Street", "county": "Fairfax", "state": "Virginia", "zip_code": "22309", "locality": "Alexandria", "precinct": "ALE_504", "precinct_id": "8", "user": 2}}, {"model": "myapp.profile", "pk": 3, "fields": {"voter_number": 1, "voter_status": "inactive", "date_registered": "2018-04-20", "address": null, "county": null, "state": null, "zip_code": null, "locality": null, "precinct": null, "precinct_id": null, "user": 3}}]
+</p>
+
+<hr>
+
+<div id="backButton">
+    <a href="/">BACK</a>
+</div>
+
+{% endblock content %}

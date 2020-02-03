@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block content %}
+<!-- Header Section -->
+<h1 class="mainTitle">Welcome to the {{ activeElection.title }} Election</h1>
+<h2 class="subtitle">Please enter the
+  <strong>worker identification number:</h2>
+
+<!-- Content Section -->
+
+<input type="text" class="loginTextInput" id="inputID" placeholder="Worker Identification Number" />
+<div class="button">
+  <!-- <a href ="/worker">Enter</a> -->
+  <button onclick="validateWorkerID()">Enter</button>
+</div>
+<!--
+<form method="post" action="{% url 'login' %}">
+{% csrf_token %}
+
+</form> -->
+{% endblock content %}

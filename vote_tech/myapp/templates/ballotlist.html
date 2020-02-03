@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% block content %}
+
+<h2>Hello, {{ user.first_name }} {{ user.last_name }}! You have {{ ballotList.count }} ballot(s) to fill out:</h2>
+
+{% for ballot in ballotList %}
+<div class="ballotContainer">
+    <div class="ballotInfo" id="ballot1">
+        <div class="left">
+            <h3>{{ballot.title}}</h3>
+        </div>
+        <div class="right">
+            <p>{{ballot.location}}</p>
+            <p>{{ user.profile.county }}</p>
+        </div>
+    </div>
+    <a href="{{ballot.id}}/">
+    <div class="button" id="open_ballot1">
+        Open Ballot
+    </div>
+    </a>
+</div>
+{% endfor %} {% endblock content %}
